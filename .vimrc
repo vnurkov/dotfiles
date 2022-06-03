@@ -119,3 +119,4 @@ nmap <leader>w :w!<cr>
 " Fast quit
 nmap <leader>ww :q<cr>
 
+let g:go_version_warning = 0
