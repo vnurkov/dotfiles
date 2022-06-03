@@ -18,3 +18,6 @@ ln -sf $PWD/.bashrc $HOMEDIR/.bashrc && echo "bashrc link created"
 
 # make vimrc symlink
 ln -sf $PWD/.vimrc $HOMEDIR/.vimrc && echo "vimrc link created"
+
+# make .vim folder symlink
+ln -sf $PWD/.vim $HOMEDIR/.vim && echo "vim folder link created"
