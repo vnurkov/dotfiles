@@ -152,4 +152,4 @@ mydu() {
 # export PATH=$PATH:$GOPATH/bin
 # export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
-eval `dircolors /home/silentstep/.dir_colors/dircolors`
+eval `dircolors ~/.dir_colors/dircolors`
