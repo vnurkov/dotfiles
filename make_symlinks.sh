@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # get user homedir
-HOMEDIR=$( getent passwd "$USER" | cut -d: -f6 )
+# HOMEDIR=$( getent passwd "$USER" | cut -d: -f6 )
+HOMEDIR=$(eval echo "~$USER")
 OS_BASH_FILE=$HOMEDIR/.bashrc
 OS_VIM_FILE=$HOMEDIR/.vimrc
 
