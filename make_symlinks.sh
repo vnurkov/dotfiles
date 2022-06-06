@@ -9,7 +9,7 @@ OS_VIM_DIR=$HOMEDIR/.vim
 
 if [ -f "$OS_BASH_FILE" ]; then
     echo "$OS_BASH_FILE exists, replacing"
-    unlink $OS_BASH_FILE
+    readlink $OS_BASH_FILE && unlink $OS_BASH_FILE && echo "Unlinked symlink" || rm -f $OS_BASH_FILE && echo "Removed file"
 fi
 
 if [ -f "$OS_VIM_FILE" ]; then
