@@ -6,6 +6,7 @@ HOMEDIR=$(eval printf "~$USER")
 OS_BASH_FILE=$HOMEDIR/.bashrc 
 OS_VIM_FILE=$HOMEDIR/.vimrc
 OS_VIM_DIR=$HOMEDIR/.vim
+OS_DIRCOLORS=$HOMEDIR/.dir_colors
 
 if [ -f "$OS_BASH_FILE" ]; then
     if readlink -q "$OS_BASH_FILE"; then
@@ -37,6 +38,16 @@ if [ -d "$OS_VIM_DIR" ]; then
     fi
 fi
 
+if [ -d "$OS_DIRCOLORS" ]; then 
+    if readlink "$OS_DIRCOLORS"; then
+        printf "dir_colors symlink found, unlinking...\n"
+        unlink $OS_DIRCOLORS && printf "$OS_DIRCOLORS Unlinked!\n\n"
+    else
+        printf "dir_colors folder found, deleting...\n"
+        rm -rf $OS_DIRCOLORS && printf "$OS_DIRCOLORS Deleted!\n\n"
+    fi
+fi
+
 # make bashrc symlink
 ln -sf $PWD/.bashrc $OS_BASH_FILE && printf "bashrc link created\n"
 
@@ -45,3 +56,6 @@ ln -sf $PWD/.vimrc $OS_VIM_FILE && printf "vimrc link created\n"
 
 # make .vim folder symlink
 ln -sf $PWD/.vim $OS_VIM_DIR && printf "vim folder link created\n"
+
+# make .dir_colors folder symlink
+ln -sf $PWD/.dir_colors $OS_DIRCOLORS && printf "dir_colors link created\n"
