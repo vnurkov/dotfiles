@@ -4,10 +4,10 @@
 OS_VERSION=$(uname -s)
 HOMEDIR=$(eval printf "~$USER")
 
-if [ $OS_VERSION="Linux" ]; then 
+if [ "$OS_VERSION" = "Linux" ]; then 
     printf "Linux found\n"
     OS_BASH_FILE=$HOMEDIR/.bashrc 
-elif [ $OS_VERSION="Darwin" ]; then 
+elif [ "$OS_VERSION" = "Darwin" ]; then 
     printf "MacOS found\n"
     OS_BASH_FILE=$HOMEDIR/.bash_profile 
 fi
