@@ -1,9 +1,17 @@
 #!/bin/bash
 
 # get user homedir
-# HOMEDIR=$( getent passwd "$USER" | cut -d: -f6 )
+OS_VERSION=$(uname -s)
 HOMEDIR=$(eval printf "~$USER")
-OS_BASH_FILE=$HOMEDIR/.bashrc 
+
+if [ $OS_VERSION="Linux" ]; then 
+    printf "Linux found\n"
+    OS_BASH_FILE=$HOMEDIR/.bashrc 
+elif [ $OS_VERSION="Darwin" ]; then 
+    printf "MacOS found\n"
+    OS_BASH_FILE=$HOMEDIR/.bash_profile 
+fi
+
 OS_VIM_FILE=$HOMEDIR/.vimrc
 OS_VIM_DIR=$HOMEDIR/.vim
 OS_DIRCOLORS=$HOMEDIR/.dir_colors
