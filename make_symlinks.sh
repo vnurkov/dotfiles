@@ -5,11 +5,14 @@ OS_VERSION=$(uname -s)
 HOMEDIR=$(eval printf "~$USER")
 
 if [ "$OS_VERSION" = "Linux" ]; then 
-    printf "Linux found\n"
+    printf "Linux system detected\n\n"
     OS_BASH_FILE=$HOMEDIR/.bashrc 
 elif [ "$OS_VERSION" = "Darwin" ]; then 
-    printf "MacOS found\n"
-    OS_BASH_FILE=$HOMEDIR/.bash_profile 
+    printf "MacOS system detected\n"
+    OS_BASH_FILE=$HOMEDIR/.bash_profile
+else
+    printf "Unknown system, exiting .."
+    exit 0
 fi
 
 OS_VIM_FILE=$HOMEDIR/.vimrc
@@ -17,7 +20,7 @@ OS_VIM_DIR=$HOMEDIR/.vim
 OS_DIRCOLORS=$HOMEDIR/.dir_colors
 
 if [ -f "$OS_BASH_FILE" ]; then
-    if readlink "$OS_BASH_FILE"; then
+    if readlink "$OS_BASH_FILE" > /dev/null; then
         printf "bashrc symlink found, unlinking...\n"
         unlink $OS_BASH_FILE && printf "$OS_BASH_FILE Unlinked!\n\n"
     else
@@ -27,7 +30,7 @@ if [ -f "$OS_BASH_FILE" ]; then
 fi
 
 if [ -f "$OS_VIM_FILE" ]; then
-    if readlink "$OS_VIM_FILE"; then
+    if readlink "$OS_VIM_FILE" > /dev/null; then
         printf "vimrc symlink found, unlinking...\n"
         unlink $OS_VIM_FILE && printf "$OS_VIM_FILE Unlinked!\n\n"
     else
@@ -37,7 +40,7 @@ if [ -f "$OS_VIM_FILE" ]; then
 fi
 
 if [ -d "$OS_VIM_DIR" ]; then
-    if readlink "$OS_VIM_DIR"; then
+    if readlink "$OS_VIM_DIR" > /dev/null; then
         printf "vim folder symlink found, unlinking...\n"
         unlink $OS_VIM_DIR && printf "$OS_VIM_DIR Unlinked!\n\n"
     else
@@ -47,7 +50,7 @@ if [ -d "$OS_VIM_DIR" ]; then
 fi
 
 if [ -d "$OS_DIRCOLORS" ]; then 
-    if readlink "$OS_DIRCOLORS"; then
+    if readlink "$OS_DIRCOLORS" > /dev/null; then
         printf "dir_colors symlink found, unlinking...\n"
         unlink $OS_DIRCOLORS && printf "$OS_DIRCOLORS Unlinked!\n\n"
     else
