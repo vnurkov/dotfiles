@@ -8,7 +8,7 @@ if [ "$OS_VERSION" = "Linux" ]; then
     printf "Linux system detected\n\n"
     OS_BASH_FILE=$HOMEDIR/.bashrc 
 elif [ "$OS_VERSION" = "Darwin" ]; then 
-    printf "MacOS system detected\n"
+    printf "MacOS system detected\n\n"
     OS_BASH_FILE=$HOMEDIR/.bash_profile
 else
     printf "Unknown system, exiting .."
