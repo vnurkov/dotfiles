@@ -17,7 +17,7 @@ OS_VIM_DIR=$HOMEDIR/.vim
 OS_DIRCOLORS=$HOMEDIR/.dir_colors
 
 if [ -f "$OS_BASH_FILE" ]; then
-    if readlink -q "$OS_BASH_FILE"; then
+    if readlink "$OS_BASH_FILE"; then
         printf "bashrc symlink found, unlinking...\n"
         unlink $OS_BASH_FILE && printf "$OS_BASH_FILE Unlinked!\n\n"
     else
