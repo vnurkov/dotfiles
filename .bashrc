@@ -117,7 +117,7 @@ extract () {
 } 
 
 # Prompt
-PS1="\[$(tput bold)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]@\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;9m\]\$?\[$(tput sgr0)\]\[\033[38;5;11m\]:\[$(tput sgr0)\]\n\[$(tput sgr0)\]\[\033[38;5;11m\][\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;39m\]\w\[$(tput sgr0)\]\[\033[38;5;11m\]]\[$(tput sgr0)\]\[\033[38;5;9m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+PS1='\[\e[0;1;38;5;192m\](\[\e[0;1;38;5;45m\]\u\[\e[0;1;38;5;192m\].\[\e[0;1;38;5;192m\]\h\[\e[0;1;38;5;192m\])\[\e[0;1;38;5;192m\][\[\e[0;1m\]\w\[\e[0;1;38;5;192m\]]\n  \[\e[0;38;5;198m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2) \[\e[0;1;38;5;192m\]_\[\e[0;1;38;5;192m\]> \[\e[0m\]'
 
 function fawk {
     first="awk '{print "
